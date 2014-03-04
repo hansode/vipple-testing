@@ -43,12 +43,7 @@ function install_vipple() {
 
   cd ${deploy_dir}
   git pull origin master
-  install -m 755 vipple /etc/init.d/vipple
-  chkconfig --add vipple
-
-  if [[ ! -d /etc/vipple ]]; then
-    mkdir /etc/vipple
-  fi
+  ./install.sh
 }
 
 #
