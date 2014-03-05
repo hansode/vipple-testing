@@ -18,51 +18,51 @@ function run_in_target() {
 
 function show_ipaddr() {
   local node=${1}
-  run_in_target ${node} 'ip addr show eth1 | grep -w inet'
+  run_in_target ${node} "ip addr show eth1 | grep -w inet"
 }
 
 ## vipple
 
 function force_stop_vipple() {
   local node=${1}
-  run_in_target ${node} 'sudo service vipple stop || :'
+  run_in_target ${node} "sudo service vipple stop || :"
 }
 
 function stop_vipple() {
   local node=${1}
-  run_in_target ${node} 'sudo service vipple stop'
+  run_in_target ${node} "sudo service vipple stop"
 }
 
 function force_start_vipple() {
   local node=${1}
-  run_in_target ${node} 'sudo service vipple start || :'
+  run_in_target ${node} "sudo service vipple start || :"
 }
 
 function start_vipple() {
   local node=${1}
-  run_in_target ${node} 'sudo service vipple start'
+  run_in_target ${node} "sudo service vipple start"
 }
 
 ## vipple-zero
 
 function force_stop_vipple_zero() {
   local node=${1}
-  run_in_target ${node} 'sudo service vipple-zero stop || :'
+  run_in_target ${node} "sudo service vipple-zero stop || :"
 }
 
 function stop_vipple_zero() {
   local node=${1}
-  run_in_target ${node} 'sudo service vipple-zero stop'
+  run_in_target ${node} "sudo service vipple-zero stop"
 }
 
 function force_start_vipple_zero() {
   local node=${1}
-  run_in_target ${node} 'sudo service vipple-zero start || :'
+  run_in_target ${node} "sudo service vipple-zero start || :"
 }
 
 function start_vipple_zero() {
   local node=${1}
-  run_in_target ${node} 'sudo service vipple-zero start'
+  run_in_target ${node} "sudo service vipple-zero start"
 }
 
 # setup
