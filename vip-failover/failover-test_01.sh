@@ -10,11 +10,7 @@ set -x
 #
 
 . failover-functions.sh
-
-# setup
-
-force_stop_vipple node01
-force_stop_vipple node02
+. failover-test_setup.sh
 
 # main
 
