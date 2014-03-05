@@ -18,7 +18,8 @@ function run_in_target() {
 
 function show_ipaddr() {
   local node=${1}
-  run_in_target ${node} "ip addr show eth1 | grep -w inet"
+  shift; eval local "${@}"
+  run_in_target ${node} "ip addr show ${ifname} | grep -w inet"
 }
 
 ## vipple
@@ -73,9 +74,9 @@ force_stop_vipple node02
 # main
 
 start_vipple node01
-show_ipaddr  node01
+show_ipaddr  node01 ifname=eth1
  stop_vipple node01
 
 start_vipple node02
-show_ipaddr  node02
+show_ipaddr  node02 ifname=eth1
  stop_vipple node02
