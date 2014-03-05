@@ -38,17 +38,17 @@ $ time ./failover-test.sh
 ```
 + force_stop_vipple node01
 + local node=node01
-+ vagrant ssh node01 -c 'sudo /etc/init.d/vipple stop || :'
++ vagrant ssh node01 -c 'sudo service vipple stop || :'
 Stopping simple virtual ip address handler: RTNETLINK answers: Cannot assign requested address
 [FAILED]
 + force_stop_vipple node02
 + local node=node02
-+ vagrant ssh node02 -c 'sudo /etc/init.d/vipple stop || :'
++ vagrant ssh node02 -c 'sudo service vipple stop || :'
 Stopping simple virtual ip address handler: RTNETLINK answers: Cannot assign requested address
 [FAILED]
 + start_vipple node01
 + local node=node01
-+ vagrant ssh node01 -c 'sudo /etc/init.d/vipple start'
++ vagrant ssh node01 -c 'sudo service vipple start'
 Starting simple virtual ip address handler: PING 10.126.5.17 (10.126.5.17) 56(84) bytes of data.
 
 --- 10.126.5.17 ping statistics ---
@@ -62,11 +62,11 @@ pipe 3
     inet 10.126.5.17/24 scope global secondary eth1
 + stop_vipple node01
 + local node=node01
-+ vagrant ssh node01 -c 'sudo /etc/init.d/vipple stop'
++ vagrant ssh node01 -c 'sudo service vipple stop'
 Stopping simple virtual ip address handler: [  OK  ]
 + start_vipple node02
 + local node=node02
-+ vagrant ssh node02 -c 'sudo /etc/init.d/vipple start'
++ vagrant ssh node02 -c 'sudo service vipple start'
 Starting simple virtual ip address handler: PING 10.126.5.17 (10.126.5.17) 56(84) bytes of data.
 
 --- 10.126.5.17 ping statistics ---
@@ -80,7 +80,7 @@ pipe 3
     inet 10.126.5.17/24 scope global secondary eth1
 + stop_vipple node02
 + local node=node02
-+ vagrant ssh node02 -c 'sudo /etc/init.d/vipple stop'
++ vagrant ssh node02 -c 'sudo service vipple stop'
 Stopping simple virtual ip address handler: [  OK  ]
 
 real    0m46.967s
