@@ -7,10 +7,21 @@ set -e
 set -o pipefail
 set -x
 
+# functions
+
+## common
+
 function run_in_target() {
   local node=${1}; shift
   vagrant ssh ${node} -c "${@}"
 }
+
+function show_ipaddr() {
+  local node=${1}
+  run_in_target ${node} 'ip addr show eth1 | grep -w inet'
+}
+
+## vipple
 
 function force_stop_vipple() {
   local node=${1}
@@ -30,11 +41,6 @@ function force_start_vipple() {
 function start_vipple() {
   local node=${1}
   run_in_target ${node} 'sudo service vipple start'
-}
-
-function show_ipaddr() {
-  local node=${1}
-  run_in_target ${node} 'ip addr show eth1 | grep -w inet'
 }
 
 # setup
