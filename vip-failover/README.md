@@ -8,6 +8,29 @@ Setup
 $ time vagrant up
 ```
 
+System Configuration Diagram
+----------------------------
+
+```
+        +------+
+        | host |
+        +------+
+           |
+         (ssh)
+           |
+     +-----+-----+
+     |           |
+ +---|--+    +---|--+
+ |   V  |    |   V  |
+ | eth0 |    | eth0 |
+ |      |    |      |
+ |      |    |      |
+ | eth1<-----> eth1 |  vip failover line
+ |      |    |      |
+ +------+    +------+
+  node01      node02
+```
+
 Failover Tests
 ==============
 
