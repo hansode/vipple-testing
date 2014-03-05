@@ -8,31 +8,43 @@ Setup
 $ time vagrant up
 ```
 
+System Configuration Diagram
+----------------------------
+
+```
+        +------+
+        | host |
+        +------+
+           |
+         (ssh)
+           |
+     +-----+-----+
+     |           |
+ +---|--+    +---|--+
+ |   V  |    |   V  |
+ | eth0 |    | eth0 |
+ |      |    |      |
+ |      |    |      |
+ | eth1<-----> eth1 |  vip failover line
+ |      |    |      |
+ +------+    +------+
+  node01      node02
+```
+
 Failover Tests
 ==============
 
-Prepare
--------
-
-Terminal-A:
-
-```
-$ vagrant ssh node01
-$ tail -F /var/log/messages
-```
-
-Terminal-B:
-
-```
-$ vagrant ssh node02
-$ tail -F /var/log/messages
-```
+| filename policy     | test target                |
+|:--------------------|:---------------------------|
+| failover-test_0*.sh | `vipple`                   |
+| failover-test_1*.sh | `vipple-zero`              |
+| failover-test_2*.sh | `vipple` and `vipple-zero` |
 
 Run tests
 ---------
 
 ```
-$ time ./failover-test.sh
+$ time ./run-tests.sh
 ```
 
 ```
