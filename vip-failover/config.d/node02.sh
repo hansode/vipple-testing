@@ -73,7 +73,7 @@ install_vipple_down_script
 
 ##
 
-/etc/init.d/network restart
+service network restart
 
 ##
 

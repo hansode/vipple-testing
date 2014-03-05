@@ -9,22 +9,22 @@ set -x
 
 function force_stop_vipple() {
   local node=${1}
-  vagrant ssh ${node} -c 'sudo /etc/init.d/vipple stop || :'
+  vagrant ssh ${node} -c 'sudo service vipple stop || :'
 }
 
 function stop_vipple() {
   local node=${1}
-  vagrant ssh ${node} -c 'sudo /etc/init.d/vipple stop'
+  vagrant ssh ${node} -c 'sudo service vipple stop'
 }
 
 function force_start_vipple() {
   local node=${1}
-  vagrant ssh ${node} -c 'sudo /etc/init.d/vipple start || :'
+  vagrant ssh ${node} -c 'sudo service vipple start || :'
 }
 
 function start_vipple() {
   local node=${1}
-  vagrant ssh ${node} -c 'sudo /etc/init.d/vipple start'
+  vagrant ssh ${node} -c 'sudo service vipple start'
 }
 
 function show_ipaddr() {
