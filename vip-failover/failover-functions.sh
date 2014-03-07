@@ -43,11 +43,6 @@ function start_vipple() {
 
 ## vipple-zero
 
-function force_stop_vipple_zero() {
-  local node=${1}
-  run_in_target ${node} "sudo service vipple-zero stop || :"
-}
-
 function stop_vipple_zero() {
   local node=${1}
   run_in_target ${node} "sudo service vipple-zero stop"
@@ -55,7 +50,7 @@ function stop_vipple_zero() {
 
 function force_start_vipple_zero() {
   local node=${1}
-  run_in_target ${node} "sudo service vipple-zero start || :"
+  run_in_target ${node} "sudo service vipple-zero force-start"
 }
 
 function start_vipple_zero() {
