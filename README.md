@@ -12,6 +12,8 @@ System Requirements
 Getting Started
 ---------------
 
+Setup all VMs.
+
 ```
 $ vagrant up
 ```
