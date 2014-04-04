@@ -7,32 +7,16 @@ set -e
 set -o pipefail
 set -x
 
-# functions
+# Do some changes ...
+
+ifcfg_setup=/usr/local/bin/ifcfg-setup
+
+if [[ ! -f ${ifcfg_setup} ]]; then
+  curl -fSkL https://raw.githubusercontent.com/hansode/ifcfg-setup/master/bin/ifcfg-setup -o ${ifcfg_setup}
+  chmod +x ${ifcfg_setup}
+fi
 
 ## common
-
-function gen_ifcfg_path() {
-  local ifname=${1:-eth0}
-  local ifcfg_path=/etc/sysconfig/network-scripts/ifcfg
-
-  echo ${ifcfg_path}-${ifname}
-}
-
-function install_ifcfg_file() {
-  local ifname=${1:-eth0}
-
-  tee $(gen_ifcfg_path ${ifname}) </dev/stdin
-}
-
-function render_ifcfg_eth() {
-  local ifname=${1:-eth0}
-  
-  cat <<-EOS
-	DEVICE=${ifname}
-	BOOTPROTO=none
-	ONBOOT=yes
-	EOS
-}
 
 function install_vipple() {
   local deploy_dir=/var/tmp/vipple
@@ -46,7 +30,4 @@ function install_vipple() {
   ./install.sh
 }
 
-#
-
-render_ifcfg_eth eth1 | install_ifcfg_file eth1
 install_vipple
